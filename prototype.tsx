@@ -5,12 +5,12 @@
     type: 'face', // 'barcode', etc..
     projection: {}, // specify what attributes will exist in onRender parameter
     overlay: {
-      type: 'rectangle', // overridden if overlay attribute has a value
+      type: 'default', // overridden if overlay attribute has a value // v0.1
       color: 'white', // other common discreet colors
-      scale: 'fit-to-overlay' // accept pixels '240px 180px' or percentages '90%'
+      scale: 'fit-to-overlay', // accept pixels '240px 180px' or percentages '90%'
+      input: component // isomorphic? can accept component or image path // v0.2
     }
   }}
-  overlay={overlay} // isomorphic? can accept component or image path // v0.2
   onRender={data => this.setState(data)} // v0.1
 /> 
  
