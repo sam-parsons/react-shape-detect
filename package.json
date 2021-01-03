@@ -1,8 +1,12 @@
 {
   "name": "react-shape-detect",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "",
-  "main": "src/index.tsx",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
