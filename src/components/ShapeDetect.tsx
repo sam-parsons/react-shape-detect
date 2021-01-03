@@ -1,9 +1,12 @@
 import React from 'react';
 import { ShapeDetectProps, ShapeDetectState } from '../types';
+import detectFactory from './DetectFactory';
 
 export default class ShapeDetect extends React.Component<ShapeDetectProps, ShapeDetectState> {
   constructor(props: ShapeDetectProps) {
     super(props);
+
+    this.detect = this.detect.bind(this);
   }
 
   async detect(event: any) {
@@ -14,13 +17,15 @@ export default class ShapeDetect extends React.Component<ShapeDetectProps, Shape
     }
 
     // @ts-ignore
-    const faceDetect = new FaceDetector({
-      maxDetectedFaces: 5,
-      fastMode: false
-    });
+    // const faceDetect = new FaceDetector({
+    //   maxDetectedFaces: 5,
+    //   fastMode: false
+    // });
+    console.log(this.props.options)
+    const detect = detectFactory(this.props.options?.type ?? '');
     
     try {
-      const result = await faceDetect.detect(target);
+      const result = await detect.detect(target);
       this.props.onRender(result);
     } catch (e) {
       console.error(e);
@@ -34,7 +39,7 @@ export default class ShapeDetect extends React.Component<ShapeDetectProps, Shape
         <img 
           id={'shape-detect-99'} 
           src={this.props.image} 
-          onLoad={(e) => this.detect(e)} 
+          onLoad={this.detect} 
           crossOrigin={'anonymous'}
         />
       </div>
