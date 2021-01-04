@@ -4,7 +4,7 @@ import detectorFactory from '../util/DetectFactory';
 
 export default (props: ShapeDetectProps) => {
 
-  const generateDetectCallback = (type: string, onRender: (data: any) => void) => {
+  const onLoadCallback = ((type: string, onRender: (data: any) => void) => {
     return async function(event: SyntheticEvent) {
       if (!('FaceDetector' || 'BarcodeDetector' in window)) 
         alert('Your browser doesn\'t support the Shape Detection API');
@@ -23,9 +23,7 @@ export default (props: ShapeDetectProps) => {
         alert('Detection error: ' + e.message);
       }
     }
-  }
-
-  const onLoadCallback = generateDetectCallback(props.options?.type ?? '', props.onRender)
+  })(props.options?.type ?? '', props.onRender);
 
   return (
     <div>
