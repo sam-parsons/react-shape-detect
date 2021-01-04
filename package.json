@@ -1,6 +1,6 @@
 {
   "name": "react-shape-detect",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -33,6 +33,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "jest": "^26.6.3",
+    "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "react-dom": "16.13.0",
     "ts-jest": "^26.4.4",
@@ -42,6 +43,10 @@
     "react": "16.13.0"
   },
   "jest": {
-    "setupFilesAfterEnv": ["./node_modules/jest-enzyme/lib/index.js", "./src/setupTests.ts"]
+    "setupFilesAfterEnv": [
+      "jest-enzyme",
+      "./setupTests.ts"
+    ],
+    "testEnvironment": "enzyme"
   }
 }
