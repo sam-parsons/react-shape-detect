@@ -1,6 +1,6 @@
 {
   "name": "react-shape-detect",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -18,9 +18,7 @@
   },
   "keywords": [
     "React",
-    "Shape",
-    "Detection",
-    "API"
+    "Shape Detection API"
   ],
   "author": "Sam Parsons",
   "license": "ISC",
