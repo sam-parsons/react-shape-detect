@@ -12,6 +12,9 @@ export default function(type: string) {
     case 'barcode':
       // @ts-ignore
       detect = new BarcodeDetector();
+      break;
+    default:
+      break;
   }
 
   return detect;
