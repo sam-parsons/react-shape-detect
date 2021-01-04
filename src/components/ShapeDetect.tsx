@@ -31,6 +31,7 @@ export default (props: ShapeDetectProps) => {
         src={props.image} 
         onLoad={onLoadCallback} 
         crossOrigin={'anonymous'}
+        data-test-id={'react-shape-detect'}
       />
     </div>
   );
