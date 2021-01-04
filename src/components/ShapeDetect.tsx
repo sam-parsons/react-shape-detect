@@ -1,45 +1,36 @@
-import React from 'react';
-import { ShapeDetectProps, ShapeDetectState } from '../types';
-import detectFactory from './DetectFactory';
+import React, { SyntheticEvent } from 'react';
+import { ShapeDetectProps } from '../types';
+import detectFactory from '../util/DetectFactory';
 
-export default class ShapeDetect extends React.Component<ShapeDetectProps, ShapeDetectState> {
+export default class ShapeDetect extends React.Component<ShapeDetectProps> {
   constructor(props: ShapeDetectProps) {
     super(props);
-
-    this.detect = this.detect.bind(this);
   }
 
-  async detect(event: any) {
+  async detect(event: SyntheticEvent) {
+    if (!('FaceDetector' || 'BarcodeDetector' in window)) alert('Your browser doesn\'t support the Shape Detection API');
+    
     const target = event.target;
 
-    if (!('FaceDetector' in window)) {
-      alert('Your browser doesn\'t support the Shape Detection API');
-    }
-
-    // @ts-ignore
-    // const faceDetect = new FaceDetector({
-    //   maxDetectedFaces: 5,
-    //   fastMode: false
-    // });
-    console.log(this.props.options)
-    const detect = detectFactory(this.props.options?.type ?? '');
+    const detector = detectFactory(this.props.options?.type ?? '');
     
     try {
-      const result = await detect.detect(target);
+      const result = await detector.detect(target)
       this.props.onRender(result);
+      return result;
     } catch (e) {
       console.error(e);
       alert('Detection error: ' + e.message);
     }
+
   }
 
   render() {
     return (
       <div>
         <img 
-          id={'shape-detect-99'} 
           src={this.props.image} 
-          onLoad={this.detect} 
+          onLoad={this.detect.bind(this)} 
           crossOrigin={'anonymous'}
         />
       </div>
