@@ -5,7 +5,3 @@ export type ShapeDetectProps = {
   },
   onRender: (data: any) => void
 }
-
-export type ShapeDetectState = {
-  data: any
-}
