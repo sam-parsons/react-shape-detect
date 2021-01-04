@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import { ShapeDetectProps } from '../types';
-import detectorFactory from '../util/DetectFactory';
+import detectorFactory from '../util/DetectorFactory';
 
 export default (props: ShapeDetectProps) => {
 
@@ -9,7 +9,6 @@ export default (props: ShapeDetectProps) => {
       if (!('FaceDetector' || 'BarcodeDetector' in window)) 
         alert('Your browser doesn\'t support the Shape Detection API');
       
-      // save ImageBitmapSource
       const target = event.target;
 
       const detector = detectorFactory(type ?? '');
