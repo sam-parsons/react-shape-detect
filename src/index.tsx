@@ -1,7 +1,7 @@
 import React from 'react';
 import ShapeDetect from './components/ShapeDetect';
-import { ShapeDetectProps } from './types';
+import { ModuleProps } from './types';
 
-export default function(props: ShapeDetectProps) {
+export default function(props: ModuleProps) {
   return <ShapeDetect image={props.image} onRender={props.onRender} options={props.options} />;
 }
