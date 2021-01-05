@@ -11,8 +11,14 @@ describe('ShapeDetect', () => {
     }
   }
 
+  let wrapper;
+
+  afterEach(() => {
+    wrapper = null;
+  })
+
   it('renders an img with the correct source', () => {
-    const wrapper = mount(
+    wrapper = mount(
       <ShapeDetect 
         image={url} 
         onRender={onRender()} 
@@ -20,6 +26,23 @@ describe('ShapeDetect', () => {
       />
     );
     expect(wrapper.find('img').prop('src')).toEqual(url);
+  });
+
+  it('renders an img with the custom tag attrivutes', () => {
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+        onRender={onRender()} 
+        options={{ 
+          type: 'face',
+          attributes: {
+            alt: 'shape-detect'
+          }
+        }}
+      />
+    );
+    const { alt } = wrapper.find('img').props()
+    expect(alt).toEqual('shape-detect');
   });
 
 });
