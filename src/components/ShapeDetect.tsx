@@ -3,7 +3,6 @@ import { ShapeDetectProps } from '../types';
 import detectorFactory from '../util/DetectorFactory';
 
 export default (props: ShapeDetectProps) => {
-  const mockOnRender = (data: SyntheticEvent) => {};
 
   const onLoadCallback = ((type: string, onRender: (data: any) => void) => {
     return async function(event: SyntheticEvent) {
@@ -23,7 +22,7 @@ export default (props: ShapeDetectProps) => {
         alert('Detection error: ' + e.message);
       }
     }
-  })(props.options?.type ?? '', props.onRender ?? mockOnRender);
+  })(props.options?.type ?? '', props.onRender);
 
   // spread custom img tag attributes
   const imgProps: {[key: string]: any} = Object.assign({}, props.options?.attributes)

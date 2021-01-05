@@ -8,11 +8,12 @@ export type ShapeDetectProps = {
       alt?: string
     }
   },
-  onRender?: (data: SyntheticEvent) => void
+  onRender: (data: SyntheticEvent) => void
 }
 
 export type ModuleProps = {
   image: string,
   options?: {},
+  // 
   onRender?: (data: SyntheticEvent) => void
 }
