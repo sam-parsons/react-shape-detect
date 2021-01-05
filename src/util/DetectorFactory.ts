@@ -11,6 +11,10 @@ export default function(type: string) {
       // @ts-ignore
       detect = new BarcodeDetector();
       break;
+    case 'text':
+      // @ts-ignore
+      detect = new TextDetector();
+      break;
     default:
       break;
   }
