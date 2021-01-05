@@ -1,8 +1,9 @@
 import React, { SyntheticEvent } from 'react';
 import ShapeDetect from '../src/index';
+import { mocked } from 'ts-jest/utils';
 import { mount } from 'enzyme';
 
-const url = "https://cdn.glitch.com/5a76353b-f724-4f28-b022-58fd035621f1%2F1280px-Schmidt-Brin-Page-20080520.jpg?1547043906122"
+const url = '../assets/test1.jpg';
 
 describe('ShapeDetect', () => {
   const onRender = () => {
@@ -43,6 +44,32 @@ describe('ShapeDetect', () => {
     );
     const { alt } = wrapper.find('img').props()
     expect(alt).toEqual('shape-detect');
+  });
+  
+  xit('invokes onRender callback', async () => {
+    expect.assertions(1);
+
+    const mockedMock = jest.fn()
+    const thisFunc = (data: SyntheticEvent): void => {}
+
+    const mockedReturnFunc = jest.fn((data: SyntheticEvent) => {
+      mockedMock()
+      return expect(mocked(mockedMock.mock.calls.length)).toEqual(1);
+    });
+
+    mockedReturnFunc.mockImplementation(thisFunc);
+    mockedReturnFunc.mockReturnValueOnce();
+  
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+        onRender={mockedReturnFunc} 
+        options={{ 
+          type: 'face',
+        }}
+      />
+    );
+    
   });
 
 });
