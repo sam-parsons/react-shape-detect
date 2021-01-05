@@ -45,6 +45,16 @@ describe('ShapeDetect', () => {
     const { alt } = wrapper.find('img').props()
     expect(alt).toEqual('shape-detect');
   });
+
+  it('renders with crossOrigin attribute value of anonymous', () => {
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+      />
+    );
+    const { crossOrigin } = wrapper.find('img').props()
+    expect(crossOrigin).toEqual('anonymous');
+  });
   
   xit('invokes onRender callback', async () => {
     expect.assertions(1);

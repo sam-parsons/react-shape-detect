@@ -33,6 +33,7 @@ export default (props: ShapeDetectProps) => {
   // assign source and callback then generate image element
   imgProps.src = props.image
   imgProps.onLoad = onLoadCallback;
+  imgProps.crossOrigin = 'anonymous';
   const img = React.createElement('img', imgProps);
 
   return (
