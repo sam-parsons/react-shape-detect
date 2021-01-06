@@ -1,7 +1,11 @@
 // handle options input
 export default function(type: string) {
-  let detect;
+  const detectorType = type[0].toUpperCase() + type.slice(1) + 'Detector';
+  if (!(detectorType in window)) 
+    alert('Your browser doesn\'t support the Shape Detection API');
   
+  let detect;
+
   switch(type) {
     case 'face':
       // @ts-ignore

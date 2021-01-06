@@ -1,5 +1,6 @@
 import { SyntheticEvent } from "react";
 
+// private
 export type ShapeDetectProps = {
   image: string,
   options?: {
@@ -11,9 +12,14 @@ export type ShapeDetectProps = {
   onRender: (data: SyntheticEvent) => void
 }
 
-export type ModuleProps = {
+export interface detectImage {
+  type: string, 
+  onRender: (data: any) => void
+}
+
+// public
+export interface ModuleProps {
   image: string,
   options?: {},
-  // 
   onRender?: (data: SyntheticEvent) => void
 }
