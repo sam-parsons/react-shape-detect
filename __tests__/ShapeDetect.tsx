@@ -6,6 +6,7 @@ import { mount } from 'enzyme';
 const url = '../assets/test1.jpg';
 
 describe('ShapeDetect', () => {
+
   const onRender = () => {
     return (data: SyntheticEvent) => {
       return;
@@ -22,11 +23,27 @@ describe('ShapeDetect', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
-        onRender={onRender()} 
-        options={{ type: 'face' }}
       />
     );
     expect(wrapper.find('img').prop('src')).toEqual(url);
+  });
+
+  it('renders with crossOrigin attribute value of anonymous', () => {
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+      />
+    );
+    const { crossOrigin } = wrapper.find('img').props()
+    expect(crossOrigin).toEqual('anonymous');
+  });
+
+  it('mocked FaceDetector function is called once', () => {
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+      />
+    );
   });
 
   it('renders an img with the custom tag attrivutes', () => {
@@ -44,16 +61,6 @@ describe('ShapeDetect', () => {
     );
     const { alt } = wrapper.find('img').props()
     expect(alt).toEqual('shape-detect');
-  });
-
-  it('renders with crossOrigin attribute value of anonymous', () => {
-    wrapper = mount(
-      <ShapeDetect 
-        image={url} 
-      />
-    );
-    const { crossOrigin } = wrapper.find('img').props()
-    expect(crossOrigin).toEqual('anonymous');
   });
   
   xit('invokes onRender callback', async () => {
@@ -79,7 +86,6 @@ describe('ShapeDetect', () => {
         }}
       />
     );
-    
   });
 
 });
