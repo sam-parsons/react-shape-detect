@@ -1,4 +1,5 @@
-# react-shape-detect [![CI](https://github.com/sam-parsons/react-shape-detect/workflows/Node.js%20CI/badge.svg)]()
+# react-shape-detect
+![CI](https://github.com/sam-parsons/react-shape-detect/workflows/Node.js%20CI/badge.svg)
 
 > A React componment integration with the Shape Detection API. Provides coordinate data and overlay capabilites as a higher order function.
 
