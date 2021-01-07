@@ -34,7 +34,7 @@ describe('ShapeDetect', () => {
         image={url} 
       />
     );
-    const { crossOrigin } = wrapper.find('img').props()
+    const { crossOrigin } = wrapper.find('img').props();
     expect(crossOrigin).toEqual('anonymous');
   });
 
@@ -42,6 +42,17 @@ describe('ShapeDetect', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
+      />
+    );
+  });
+
+  it('should throw error when detector type is unrecognized', () => {
+    wrapper = mount(
+      <ShapeDetect 
+        image={url} 
+        options={{
+          type: 'fake'
+        }}
       />
     );
   });
@@ -59,7 +70,7 @@ describe('ShapeDetect', () => {
         }}
       />
     );
-    const { alt } = wrapper.find('img').props()
+    const { alt } = wrapper.find('img').props();
     expect(alt).toEqual('shape-detect');
   });
   
