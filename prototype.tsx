@@ -2,7 +2,7 @@
 <ShapeDetect 
   image={image} // v0.1
   options={{
-    type: 'face', // 'barcode', etc..
+    type: 'face', // 'barcode', 'text'
     projection: {}, // specify what attributes will exist in onRender parameter
     overlay: {
       type: 'default', // overridden if overlay attribute has a value // v0.1
