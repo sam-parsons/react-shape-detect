@@ -11,8 +11,7 @@
     "build": "tsc",
     "prepare": "npm run build",
     "test": "jest --config jestconfig.json",
-    "preversion": "npm test",
-    "postversion": "git push origin"
+    "preversion": "npm test"
   },
   "repository": {
     "type": "git",
