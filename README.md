@@ -32,20 +32,35 @@ export default function App() {
 }
 ```
 
-
-## API
-
+## Basic Props
 
 ### image
-Type: `String`
+
+> `string` | _required_
+
+Path to image - network or local.
 
 ### onRender
-Type: (data) => void <br>
-Returns: [`Object`]
+
+> `function(data: any)` | defaults to: `(data) => void`
+
+Callback is executed with the onLoad event of the `<img/>` tag. <br>
+Returns coordinate data from matches on criteria defined in options object.
 
 ### options
-Type: `Object` <br>
 
+> `object`
+
+Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img tag attributes
+
+```json
+{
+  "type": "face", // "barcode", "text"
+  "attributes": {
+     // any normal HTML img tag attributes ... see src/types/ for complete list
+  }
+}
+```
 
 ## License
 
