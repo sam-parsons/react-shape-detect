@@ -53,7 +53,7 @@ Returns coordinate data from matches on criteria defined in options object.
 
 Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img tag attributes
 
-```json
+```js
 {
   "type": "face", // "barcode", "text"
   "attributes": {
