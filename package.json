@@ -12,7 +12,9 @@
     "prepare": "npm run build",
     "test": "jest --config jestconfig.json",
     "preversion": "npm test",
-    "pub": "npm test && npm version patch && git commit -am 'versioning and publish' && git push origin master"
+    "commit": "git commit -am 'versioning and publish'",
+    "push": "git push origin master",
+    "pub": "npm test && npm version patch && npm run commit && npm run push"
   },
   "repository": {
     "type": "git",
