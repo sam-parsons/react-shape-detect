@@ -29,7 +29,7 @@ describe('ShapeDetect', () => {
     expect(wrapper.find('img').prop('src')).toEqual(url);
   });
 
-  it('renders with crossOrigin attribute value of anonymous', () => {
+  it('renders with default crossOrigin attribute value of anonymous', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
@@ -39,15 +39,7 @@ describe('ShapeDetect', () => {
     expect(crossOrigin).toEqual('anonymous');
   });
 
-  it('mocked FaceDetector function is called once', () => {
-    wrapper = mount(
-      <ShapeDetect 
-        image={url} 
-      />
-    );
-  });
-
-  it('should throw error when detector type is unrecognized', () => {
+  xit('should throw error when detector type is unrecognized', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
@@ -58,7 +50,7 @@ describe('ShapeDetect', () => {
     );
   });
 
-  it('renders an img with the custom tag attrivutes', () => {
+  it('renders an img with the custom tag attributes', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
