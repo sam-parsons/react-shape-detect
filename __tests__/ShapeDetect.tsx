@@ -1,13 +1,10 @@
 import React, { SyntheticEvent } from 'react';
 import ShapeDetect from '../src/index';
-import { mocked } from 'ts-jest/utils';
 import { mount } from 'enzyme';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import setupFaceDetector from '../__mocks__/FaceDetector';
 
 const url = '../assets/test1.jpg';
-
-
 
 describe('ShapeDetect', () => {
 
@@ -95,9 +92,9 @@ describe('ShapeDetect', () => {
         }}
       />
     );
+
     fireEvent.load(screen.getByAltText('shape-detect'))
     await waitFor(() => expect(mockedMock).toHaveBeenCalled());
-    console.log('here');
   });
 
 });
