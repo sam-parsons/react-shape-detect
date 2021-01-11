@@ -2,8 +2,12 @@ import React, { SyntheticEvent } from 'react';
 import ShapeDetect from '../src/index';
 import { mocked } from 'ts-jest/utils';
 import { mount } from 'enzyme';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import setupFaceDetector from '../__mocks__/FaceDetector';
 
 const url = '../assets/test1.jpg';
+
+
 
 describe('ShapeDetect', () => {
 
@@ -74,29 +78,26 @@ describe('ShapeDetect', () => {
     expect(alt).toEqual('shape-detect');
   });
   
-  xit('invokes onRender callback', async () => {
-    expect.assertions(1);
-
+  it('invokes onRender callback', async () => {
+    window.alert = () => {};
+    setupFaceDetector();
     const mockedMock = jest.fn()
-    const thisFunc = (data: SyntheticEvent): void => {}
-
-    const mockedReturnFunc = jest.fn((data: SyntheticEvent) => {
-      mockedMock()
-      return expect(mocked(mockedMock.mock.calls.length)).toEqual(1);
-    });
-
-    mockedReturnFunc.mockImplementation(thisFunc);
-    mockedReturnFunc.mockReturnValueOnce();
-  
-    wrapper = mount(
+    
+    render(
       <ShapeDetect 
         image={url} 
-        onRender={mockedReturnFunc} 
+        onRender={mockedMock} 
         options={{ 
           type: 'face',
+          attributes: {
+            alt: 'shape-detect'
+          }
         }}
       />
     );
+    fireEvent.load(screen.getByAltText('shape-detect'))
+    await waitFor(() => expect(mockedMock).toHaveBeenCalled());
+    console.log('here');
   });
 
 });
