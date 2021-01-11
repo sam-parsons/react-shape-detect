@@ -14,7 +14,7 @@
     "preversion": "npm test",
     "commit": "git commit -am 'versioning and publish'",
     "push": "git push origin master",
-    "pub": "npm test && npm version patch && npm run commit && npm run push"
+    "pub": "npm test && npm version patch && npm run push"
   },
   "repository": {
     "type": "git",
