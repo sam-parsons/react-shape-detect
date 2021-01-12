@@ -15,7 +15,7 @@ describe('ShapeDetect', () => {
     wrapper = null;
   })
 
-  it('renders an img with the correct source', () => {
+  it('renders an img with the correct source and default crossOrigin attribute value of anonymous', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
@@ -37,17 +37,12 @@ describe('ShapeDetect', () => {
   it('should throw error when detector type is unrecognized', async () => {
     window.alert = () => {};
     setupFaceDetectorMock();
-    const mockedMock = jest.fn();
 
     expect(() => mount(
       <ShapeDetect 
         image={url} 
-        onRender={mockedMock} 
         options={{ 
-          type: 'fake',
-          attributes: {
-            alt: 'shape-detect'
-          }
+          type: 'fake'
         }}
       />
     )).toThrowError();
@@ -70,10 +65,10 @@ describe('ShapeDetect', () => {
     expect(alt).toEqual('shape-detect');
   });
   
-  it('invokes onRender callback', async () => {
+  it('invokes onRender callback', async (done) => {
     window.alert = () => {};
     setupFaceDetectorMock();
-    const mockedMock = jest.fn()
+    const mockedMock = jest.fn(() => done());
     
     render(
       <ShapeDetect 
