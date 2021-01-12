@@ -3,16 +3,11 @@ import ShapeDetect from '../src/index';
 import { mount } from 'enzyme';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import setupFaceDetectorMock from '../__mocks__/FaceDetector';
+import mockOnRender from '../src/util/mockOnRender';
 
 const url = '../assets/test1.jpg';
 
 describe('ShapeDetect', () => {
-
-  const onRender = () => {
-    return (data: SyntheticEvent) => {
-      return;
-    }
-  }
 
   let wrapper;
 
@@ -62,7 +57,7 @@ describe('ShapeDetect', () => {
     wrapper = mount(
       <ShapeDetect 
         image={url} 
-        onRender={onRender()} 
+        onRender={mockOnRender} 
         options={{ 
           type: 'face',
           attributes: {
