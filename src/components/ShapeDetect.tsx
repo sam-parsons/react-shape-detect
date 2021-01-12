@@ -1,8 +1,10 @@
 import React from 'react';
 import { ShapeDetectProps } from '../types';
 import detectImage from '../util/detectImage';
+import detectorTypeCheck from '../util/detectorTypeCheck';
 
 export default (props: ShapeDetectProps) => {
+  detectorTypeCheck(props.options?.type ?? '');
 
   // spread custom img tag attributes from public props
   // assign required attributes then generate image element

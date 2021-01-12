@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import ShapeDetect from './components/ShapeDetect';
 import { ModuleProps } from './types';
 import mockOnRender from './util/mockOnRender';
