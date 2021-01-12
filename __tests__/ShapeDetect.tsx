@@ -2,7 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import ShapeDetect from '../src/index';
 import { mount } from 'enzyme';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import setupFaceDetector from '../__mocks__/FaceDetector';
+import setupFaceDetectorMock from '../__mocks__/FaceDetector';
 
 const url = '../assets/test1.jpg';
 
@@ -39,15 +39,23 @@ describe('ShapeDetect', () => {
     expect(crossOrigin).toEqual('anonymous');
   });
 
-  xit('should throw error when detector type is unrecognized', () => {
-    wrapper = mount(
+  it('should throw error when detector type is unrecognized', async () => {
+    window.alert = () => {};
+    setupFaceDetectorMock();
+    const mockedMock = jest.fn();
+
+    expect(() => mount(
       <ShapeDetect 
         image={url} 
-        options={{
-          type: 'fake'
+        onRender={mockedMock} 
+        options={{ 
+          type: 'fake',
+          attributes: {
+            alt: 'shape-detect'
+          }
         }}
       />
-    );
+    )).toThrowError();
   });
 
   it('renders an img with the custom tag attributes', () => {
@@ -69,7 +77,7 @@ describe('ShapeDetect', () => {
   
   it('invokes onRender callback', async () => {
     window.alert = () => {};
-    setupFaceDetector();
+    setupFaceDetectorMock();
     const mockedMock = jest.fn()
     
     render(
