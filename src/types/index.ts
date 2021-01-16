@@ -21,8 +21,16 @@ export interface ModuleProps {
   options?: {
     type?: string
     attributes?: ImageAttributes
+    overlay?: {
+      input?: any,
+    }
   },
   onRender?: (data: SyntheticEvent) => void
+}
+
+export type ModuleState = {
+  componentData: [],
+  input?: any
 }
 
 // private
