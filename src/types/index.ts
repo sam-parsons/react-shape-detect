@@ -23,6 +23,7 @@ export interface ModuleProps {
     attributes?: ImageAttributes
     overlay?: {
       input?: any,
+      scale?: number
     }
   },
   onRender?: (data: SyntheticEvent) => void
@@ -30,7 +31,7 @@ export interface ModuleProps {
 
 export type ModuleState = {
   componentData: [],
-  input?: any
+  input?: any,
 }
 
 // private
@@ -38,14 +39,20 @@ export type ShapeDetectProps = {
   image: string,
   options?: {
     type?: string,
-    attributes?: ImageAttributes
+    attributes?: ImageAttributes,
+    overlay?: {
+      scale?: number
+    }
   },
   onRender: (data: SyntheticEvent) => void
 }
 
 export type OverlayProps = {
   component: JSX.Element,
-  componentData: []
+  componentData: [],
+  componentAttributes?: {
+    scale?: number // scale of entire image, may not be placed correctly
+  }
 }
 
 export interface detectImage {
