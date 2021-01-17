@@ -15,6 +15,21 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
       imageData: {}
     }
   }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions.bind(this))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions.bind(this))
+  }
+
+  updateDimensions(event: any) {
+    const { naturalHeight, naturalWidth, height, width } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
+    this.setState({
+      imageData: { naturalHeight, naturalWidth, height, width }
+    });
+  }
   
   newOnRender(onRender: any) {
     const that = this;
