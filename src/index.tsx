@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ShapeDetect from './components/ShapeDetect';
 import Overlay from './components/Overlay';
-import { ModuleProps, ModuleState } from './types';
+import { ModuleProps, ModuleState,  } from './types';
 import mockOnRender from './util/mockOnRender';
 
 export default class Module extends React.Component<ModuleProps, ModuleState> {
@@ -24,6 +24,11 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
     }
   }
 
+  filterAttributes(overlay: any): { scale: number }  {
+    const { scale } = overlay
+    return { scale };
+  }
+
   render() {
     const component = this.state.input
 
@@ -40,6 +45,7 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
         {this.state.componentData.length ? 
           <Overlay 
             component={component} 
+            componentAttributes={this.filterAttributes(this.props.options?.overlay)}
             componentData={this.state.componentData} 
           /> :
           null
