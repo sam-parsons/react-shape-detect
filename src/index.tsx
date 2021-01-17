@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ShapeDetect from './components/ShapeDetect';
+import Overlay from './components/Overlay';
 import { ModuleProps, ModuleState } from './types';
 import mockOnRender from './util/mockOnRender';
 
@@ -27,16 +28,23 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
     const component = this.state.input
 
     return (
-      <React.Fragment>
+      <div className={'wrap'} style={{
+        position: 'relative',
+        display: 'inline-block' /* <= shrinks container to image size */
+      }}>
         <ShapeDetect 
           image={this.props.image} 
           onRender={this.props.onRender ? this.newOnRender(this.props.onRender) : mockOnRender} 
           options={this.props.options} 
         />
-        {this.state.componentData.map(data => {
-          return component
-        })}
-      </React.Fragment>
+        {this.state.componentData.length ? 
+          <Overlay 
+            component={component} 
+            componentData={this.state.componentData} 
+          /> :
+          null
+        }
+      </div>
     );
   }
 }
