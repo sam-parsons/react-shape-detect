@@ -14,7 +14,8 @@ export default (props: ShapeDetectProps) => {
   imgProps.style = {
     display: 'block',
     maxWidth: '100%',
-    height: 'auto'
+    height: 'auto',
+    width: `${props.options?.overlay?.scale}%`
   };
   // @ts-ignore
   imgProps.onLoad = detectImage(props.options?.type ?? '', props.onRender);
