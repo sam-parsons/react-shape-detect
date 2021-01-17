@@ -11,6 +11,11 @@ export default (props: ShapeDetectProps) => {
   const imgProps: {[key: string]: any} = Object.assign({}, props.options?.attributes);
   imgProps.src = props.image;
   imgProps.crossOrigin = 'anonymous';
+  imgProps.style = {
+    display: 'block',
+    maxWidth: '100%',
+    height: 'auto'
+  };
   // @ts-ignore
   imgProps.onLoad = detectImage(props.options?.type ?? '', props.onRender);
 
