@@ -1,4 +1,4 @@
-import { SyntheticEvent } from "react";
+import { Component, ReactComponentElement, ReactElement, SyntheticEvent } from "react";
 
 // public
 export interface ImageAttributes {
@@ -41,6 +41,11 @@ export type ShapeDetectProps = {
     attributes?: ImageAttributes
   },
   onRender: (data: SyntheticEvent) => void
+}
+
+export type OverlayProps = {
+  component: JSX.Element,
+  componentData: []
 }
 
 export interface detectImage {
