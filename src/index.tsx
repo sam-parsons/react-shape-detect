@@ -11,20 +11,21 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
 
     this.state = {
       componentData: [],
-      input: props.options?.overlay?.input
+      input: props.options?.overlay?.input,
+      imageData: {}
     }
   }
   
   newOnRender(onRender: any) {
     const that = this;
-    return function(data: any) {
-      that.setState({componentData: data}, () => {
-        onRender(data);
+    return function(data: any, imageData: any) {
+      that.setState({componentData: data, imageData }, () => {
+        onRender(data); // onRender from user
       });
     }
   }
 
-  filterAttributes(overlay: any): { scale: number }  {
+  filterAttributes(overlay: any, imageData: any): { scale: number }  {
     const { scale } = overlay
     return { scale };
   }
@@ -45,7 +46,8 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
         {this.state.componentData.length ? 
           <Overlay 
             component={component} 
-            componentAttributes={this.filterAttributes(this.props.options?.overlay)}
+            componentAttributes={this.filterAttributes(this.props.options?.overlay, this.state.imageData)}
+            imageData={this.state.imageData}
             componentData={this.state.componentData} 
           /> :
           null
