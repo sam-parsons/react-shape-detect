@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ShapeDetect from './components/ShapeDetect';
 import Overlay from './components/Overlay';
 import { ModuleProps, ModuleState,  } from './types';
 import mockOnRender from './util/mockOnRender';
+import { debounce } from 'lodash';
 
 export default class Module extends React.Component<ModuleProps, ModuleState> {
 
@@ -24,12 +25,12 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
     window.removeEventListener('resize', this.updateDimensions.bind(this))
   }
 
-  updateDimensions(event: any) {
+  updateDimensions = debounce((event: any) => {
     const { naturalHeight, naturalWidth, height, width } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
     this.setState({
       imageData: { naturalHeight, naturalWidth, height, width }
     });
-  }
+  }, this.props.options?.resizeDebounce ?? 250);
   
   newOnRender(onRender: any) {
     const that = this;
