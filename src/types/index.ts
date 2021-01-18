@@ -20,7 +20,8 @@ export interface ModuleProps {
   image: string,
   options?: {
     type?: string
-    attributes?: ImageAttributes
+    attributes?: ImageAttributes,
+    resizeDebounce?: number
     overlay?: {
       input?: any,
       scale?: number
