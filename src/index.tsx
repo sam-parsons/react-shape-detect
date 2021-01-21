@@ -26,7 +26,12 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
   }
 
   updateDimensions = debounce((event: any) => {
-    const { naturalHeight, naturalWidth, height, width } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
+    const { 
+      naturalHeight, 
+      naturalWidth, 
+      height, 
+      width 
+    } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
     this.setState({
       imageData: { naturalHeight, naturalWidth, height, width }
     });
