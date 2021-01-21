@@ -65,6 +65,7 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
             componentAttributes={this.filterAttributes(this.props.options?.overlay, this.state.imageData)}
             imageData={this.state.imageData}
             componentData={this.state.componentData} 
+            input={this.props.options?.overlay?.input}
           /> :
           null
         }
