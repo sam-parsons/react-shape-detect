@@ -61,6 +61,17 @@ export type OverlayProps = {
     naturalWidth?: any,
     naturalHeight?: any
   }
+  input?: any
+}
+
+export type OverlayItemDefsProps = {
+  imageData?: {
+    width?: any,
+    height?: any,
+    naturalWidth?: any,
+    naturalHeight?: any
+  }
+  input?: any
 }
 
 export interface detectImage {
