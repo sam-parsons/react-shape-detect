@@ -32,6 +32,8 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
       height, 
       width 
     } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
+    // refactor to use querySelectorAll
+    // use web crypto, store in state
     this.setState({
       imageData: { naturalHeight, naturalWidth, height, width }
     });
@@ -46,34 +48,27 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
     }
   }
 
-  filterAttributes(overlay: any, imageData: any): { scale: number }  {
-    const { scale } = overlay
-    return { scale };
-  }
-
   render() {
-    const component = this.state.input
+    const component = this.state.input;
+    const componentStyle: {} = {
+      position: 'relative',
+      display: 'inline-block' /* <= shrinks container to image size */
+    };
 
     return (
-      <div className={'wrap'} style={{
-        position: 'relative',
-        display: 'inline-block' /* <= shrinks container to image size */
-      }}>
+      <div className={'wrap'} style={componentStyle}>
         <ShapeDetect 
           image={this.props.image} 
           onRender={this.props.onRender ? this.newOnRender(this.props.onRender) : mockOnRender} 
           options={this.props.options} 
         />
-        {this.state.componentData.length ? 
-          <Overlay 
-            component={component} 
-            componentAttributes={this.filterAttributes(this.props.options?.overlay, this.state.imageData)}
-            imageData={this.state.imageData}
-            componentData={this.state.componentData} 
-            input={this.props.options?.overlay?.input}
-          /> :
-          null
-        }
+        <Overlay 
+          component={component} 
+          componentAttributes={{ scale: this.props.options?.overlay?.scale }}
+          imageData={this.state.imageData}
+          componentData={this.state.componentData} 
+          input={this.props.options?.overlay?.input}
+        />
       </div>
     );
   }

@@ -9,7 +9,7 @@ export default (props: OverlayProps): JSX.Element => {
     scale = (props.imageData?.width / props.imageData?.naturalWidth); // return 0.5 for 50%
     // otherwise if overlay scale attribute provided, produce scaled data
   } else if (props.componentAttributes?.scale) {
-    scale = (props.componentAttributes?.scale * 0.01 ?? 1)
+    scale = (props.componentAttributes?.scale * 0.01 ?? 1) // user input 0-100->
   }  else { // if not either, image size adultered
     scale = 1
   }
