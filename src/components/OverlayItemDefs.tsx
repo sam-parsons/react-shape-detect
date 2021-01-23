@@ -2,7 +2,7 @@ import React from 'react';
 import { OverlayItemDefsProps } from '../types'
 
 export default (props: OverlayItemDefsProps) => {
-  const patternViewBox = `0 0 ${props.imageData?.width} ${props.imageData?.height}`
+  const patternViewBox = props.imageData?.height ? `0 0 ${props.imageData?.width} ${props.imageData?.height}` : '0 0 0 0';
 
   return (
     <defs>
