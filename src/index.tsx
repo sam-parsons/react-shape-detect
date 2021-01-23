@@ -34,8 +34,6 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
       height, 
       width 
     } = document.querySelector(this.state.id) as HTMLImageElement;
-    // refactor to use querySelectorAll
-    // use web crypto, store in state
     this.setState({
       imageData: { naturalHeight, naturalWidth, height, width }
     });
