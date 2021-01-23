@@ -17,7 +17,7 @@ export default (props: ShapeDetectProps) => {
     height: 'auto',
     width: props.options?.attributes?.width ?? `${props.options?.overlay?.scale}%`
   };
-  imgProps.id = 'shape-detect-' + props.image.slice(-8);
+  imgProps.id = props.id
   // @ts-ignore
   imgProps.onLoad = detectImage(props.options?.type ?? '', props.onRender);
 

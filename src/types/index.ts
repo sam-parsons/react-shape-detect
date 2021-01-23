@@ -1,4 +1,4 @@
-import { Component, ReactComponentElement, ReactElement, SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 
 // public
 export interface ImageAttributes {
@@ -33,7 +33,8 @@ export interface ModuleProps {
 export type ModuleState = {
   componentData: [],
   input?: any,
-  imageData: {}
+  imageData: {},
+  id: string
 }
 
 // private
@@ -46,6 +47,7 @@ export type ShapeDetectProps = {
       scale?: number
     }
   },
+  id?: any,
   onRender: (data: SyntheticEvent, imageData: any) => void
 }
 

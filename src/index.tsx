@@ -4,6 +4,7 @@ import Overlay from './components/Overlay';
 import { ModuleProps, ModuleState,  } from './types';
 import mockOnRender from './util/mockOnRender';
 import { debounce } from 'lodash';
+import { v4 } from 'uuid';
 
 export default class Module extends React.Component<ModuleProps, ModuleState> {
 
@@ -13,7 +14,8 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
     this.state = {
       componentData: [],
       input: props.options?.overlay?.input,
-      imageData: {}
+      imageData: {},
+      id: v4()
     }
   }
 
@@ -31,7 +33,7 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
       naturalWidth, 
       height, 
       width 
-    } = document.querySelector('#shape-detect-' + this.props.image.slice(-8)) as HTMLImageElement;
+    } = document.querySelector(this.state.id) as HTMLImageElement;
     // refactor to use querySelectorAll
     // use web crypto, store in state
     this.setState({
@@ -61,6 +63,7 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
           image={this.props.image} 
           onRender={this.props.onRender ? this.newOnRender(this.props.onRender) : mockOnRender} 
           options={this.props.options} 
+          id={this.state.id}
         />
         <Overlay 
           component={component} 
