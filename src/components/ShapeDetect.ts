@@ -15,7 +15,7 @@ export default (props: ShapeDetectProps) => {
     display: 'block',
     maxWidth: '100%',
     height: 'auto',
-    width: props.options?.attributes?.width ?? `${props.options?.overlay?.scale}%`
+    width: props.options?.attributes?.width ?? `${props.options?.overlay?.options?.scale}%`
   };
   imgProps.id = props.id
   // @ts-ignore

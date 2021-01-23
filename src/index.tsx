@@ -65,7 +65,7 @@ export default class Module extends React.Component<ModuleProps, ModuleState> {
         />
         <Overlay 
           component={component} 
-          componentAttributes={{ scale: this.props.options?.overlay?.scale }}
+          componentAttributes={{ scale: this.props.options?.overlay?.options?.scale }}
           imageData={this.state.imageData}
           componentData={this.state.componentData} 
           input={this.props.options?.overlay?.input}
