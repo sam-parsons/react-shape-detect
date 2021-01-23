@@ -22,10 +22,7 @@ export interface ModuleProps {
     type?: string
     attributes?: ImageAttributes,
     resizeDebounce?: number
-    overlay?: {
-      input?: any,
-      scale?: number
-    }
+    overlay?: OverlayOptionsProps
   },
   onRender?: (data: SyntheticEvent) => void
 }
@@ -43,37 +40,50 @@ export type ShapeDetectProps = {
   options?: {
     type?: string,
     attributes?: ImageAttributes,
-    overlay?: {
-      scale?: number
-    }
+    overlay?: OverlayOptionsProps
   },
   id?: any,
   onRender: (data: SyntheticEvent, imageData: any) => void
+}
+
+export type OverlayOptionsProps = {
+  options: {
+    width?: number, // accept pixels '240px 180px' or percentages '90%'
+    height?: string,
+    scale?: number, // 0-100->
+    offset?: {
+      top?: number,
+      left?: number
+    },
+  },
+  input: any
 }
 
 export type OverlayProps = {
   component: JSX.Element,
   componentData: [],
   componentAttributes?: {
-    scale?: number // scale of entire image, may not be placed correctly
+    scale?: number, // scale of entire image, may not be placed correctly
+    width?: number
   },
-  imageData?: {
-    width?: any,
-    height?: any,
-    naturalWidth?: any,
-    naturalHeight?: any
-  }
+  imageData?: imageData
   input?: any
 }
 
 export type OverlayItemDefsProps = {
-  imageData?: {
-    width?: any,
-    height?: any,
-    naturalWidth?: any,
-    naturalHeight?: any
-  }
-  input?: any
+  imageData?: imageData
+  input?: any,
+  componentAttributes?: {
+    scale?: number, // scale of entire image, may not be placed correctly
+    width?: number
+  },
+}
+
+export type imageData = {
+  width?: any,
+  height?: any,
+  naturalWidth?: any,
+  naturalHeight?: any
 }
 
 export interface detectImage {
