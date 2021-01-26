@@ -17,6 +17,7 @@ $ npm i react-shape-detect
 import ShapeDetect from 'react-shape-detect';
 
 const path = 'path-or-url-to-image';
+const overlay = 'path-or-url-to-overlay';
 
 const func = function(data) {
   console.log('objects detected: ', data);
@@ -27,7 +28,16 @@ export default function App() {
     <ShapeDetect 
       image={path} 
       onRender={func} 
-      options={{ type: 'face' }} />
+      options={{ 
+        type: 'face', 
+        overlay: { 
+          input: overlay
+          options: {
+            width: '70%'
+          }
+        }
+      }} 
+    />
   );
 }
 ```
@@ -55,9 +65,19 @@ Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img ta
 
 ```js
 {
-  "type": "face", // "barcode", "text"
-  "attributes": {
-     // any normal HTML img tag attributes ... see src/types/ for complete list
+  type?: string // 'barcode', 'text'
+  attributes?: React.CSSProperties,
+  resizeDebounce?: number // default 250(ms)
+  overlay?: {
+    input: string || ReactComponent,
+    options: {
+      width?: string, // auto height or set height independently
+      height?: string,
+      offset?: { // in pixels
+        top?: number,
+        left?: number
+      }
+    }
   }
 }
 ```
