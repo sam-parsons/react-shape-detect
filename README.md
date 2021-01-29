@@ -70,7 +70,7 @@ Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img ta
   resizeDebounce?: number // default 250(ms)
   overlay?: {
     input: string || ReactComponent,
-    options: {
+    options?: {
       width?: string, // auto height or set height independently
       height?: string,
       offset?: { // in pixels
