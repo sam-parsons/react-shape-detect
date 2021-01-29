@@ -65,7 +65,7 @@ Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img ta
 
 ```js
 {
-  type?: string // 'barcode', 'text'
+  type?: string // 'barcode', 'text' // default 'face'
   attributes?: React.CSSProperties,
   resizeDebounce?: number // default 250(ms)
   overlay?: {
