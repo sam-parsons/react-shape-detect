@@ -1,24 +1,24 @@
 // handle options input
 export default function(type: string) {
 
-  let detect;
+  let detector;
 
   switch(type) {
     case 'face':
       // @ts-ignore
-      detect = new FaceDetector();
+      detector = new FaceDetector();
       break;
     case 'barcode':
       // @ts-ignore
-      detect = new BarcodeDetector();
+      detector = new BarcodeDetector();
       break;
     case 'text':
       // @ts-ignore
-      detect = new TextDetector();
+      detector = new TextDetector();
       break;
     default:
       break;
   }
 
-  return detect;
+  return detector;
 }

@@ -6,8 +6,12 @@ export default (type: string, onRender: (data: any, imageData: any) => void) => 
     try {
       const detector = detectorFactory(type ?? '');      
       const image = event.target as HTMLImageElement;
-      const { naturalHeight, naturalWidth, height, width } = image;
-      const imageData = { naturalHeight, naturalWidth, height, width };
+      const imageData = { 
+        naturalHeight: image.naturalHeight, 
+        naturalWidth: image.naturalWidth, 
+        height: image.height, 
+        width: image.width 
+      };
       const result = await detector.detect(image);
       onRender(result, imageData);
       return result;
