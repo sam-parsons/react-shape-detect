@@ -1,7 +1,7 @@
-# react-shape-detect <sub>(v0.1)</sub>
+# react-shape-detect <sub>(v0.2)</sub>
 ![CI](https://github.com/sam-parsons/react-shape-detect/workflows/Node.js%20CI/badge.svg)
 
-> A React component integration with the Shape Detection API. Provides coordinate data and overlay capabilites<sub>(v0.2)</sub>.
+> A React component integration with the Shape Detection API. Provides coordinate data and overlay capabilites.
 
 
 ## Install
@@ -61,7 +61,7 @@ Returns coordinate data from matches on criteria defined in options object.
 
 > `object`
 
-Detector type, custom Shape Detector API options<sub>v0.2</sub>, and HTML img tag attributes
+Detector type, custom Shape Detector API options, and HTML img tag attributes
 
 ```js
 {
