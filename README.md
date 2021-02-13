@@ -31,7 +31,7 @@ export default function App() {
       options={{ 
         type: 'face', 
         overlay: { 
-          input: overlay
+          input: overlay,
           options: {
             width: '70%'
           }
