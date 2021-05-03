@@ -24,19 +24,18 @@ const func = function(data) {
 }
 
 export default function App() {
+  const overlayOptions = { 
+    input: overlay,
+    options: {
+      width: '70%'
+    }
+  };
+  
   return (
     <ShapeDetect 
       image={path} 
       onRender={func} 
-      options={{ 
-        type: 'face', 
-        overlay: { 
-          input: overlay,
-          options: {
-            width: '70%'
-          }
-        }
-      }} 
+      options={{ type: 'face', overlay: overlayOptions }} 
     />
   );
 }
