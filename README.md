@@ -47,7 +47,7 @@ export default function App() {
 
 > `string` | _required_
 
-Path to image - network or local.
+Path to image
 
 ### onRender
 
@@ -83,4 +83,4 @@ Detector type, custom Shape Detector API options, and HTML img tag attributes
 
 ## License
 
-MIT © [Sam Parsons]()
+MIT
